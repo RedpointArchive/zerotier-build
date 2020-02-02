@@ -9,6 +9,16 @@ function RemoveMSVCFlags($Path) {
     Set-Content -Path $Path -Value $Content
 }
 
+$Paths = ($env:PATH).Split(";")
+$NewPaths = @()
+foreach ($Path in $Paths) {
+    if (Test-Path "$Path\sh.exe") {
+        continue
+    }
+    $NewPaths += $Path
+}
+$env:PATH = $NewPaths.Join(";")
+
 if (Test-Path $PSScriptRoot\build) {
     Remove-Item -Force $PSScriptRoot\build
 }

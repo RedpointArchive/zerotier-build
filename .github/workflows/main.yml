@@ -13,6 +13,8 @@ jobs:
       run: git submodule update --init --recursive
     - name: Show PATH
       run: echo %PATH%
+    - name: Find SH
+      run: where sh
     - name: Build
       run: .\build-mingw.ps1
     - name: Upload artifact
