@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  windows:
+  windows-mingw:
 
     runs-on: windows-latest
 
@@ -11,7 +11,14 @@ jobs:
     - uses: actions/checkout@v2
     - name: Init Submodules
       run: git submodule update --init --recursive
-    - name: CMake
-      run: cmake -G "MSYS Makefiles" libzt
-    - name: Make
-      run: make
+    - name: Show PATH
+      run: echo %PATH%
+    - name: Build
+      run: .\build-mingw.ps1
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        # Artifact name
+        name: windows-mingw
+        # Directory containing files to upload
+        path: libzt\bin\lib
