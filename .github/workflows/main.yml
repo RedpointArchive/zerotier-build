@@ -10,9 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: CMake
-      uses: lukka/run-cmake@v0.7
-      with:
-        cmakeBuildType: MinSizeRel
-        cmakeGenerator: MinGW Makefiles
+      run: cmake -G "MinGW Makefiles" .
     - name: Make
       run: mingw32-make
