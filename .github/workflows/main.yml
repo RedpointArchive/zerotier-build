@@ -9,7 +9,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Init Submodules
+      run: git submodule update --init --recursive
     - name: CMake
-      run: cmake -G "MinGW Makefiles" .
+      run: cmake -G "MinGW Makefiles" libzt
     - name: Make
       run: mingw32-make
