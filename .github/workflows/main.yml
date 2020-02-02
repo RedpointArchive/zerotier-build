@@ -13,10 +13,17 @@ jobs:
       run: git submodule update --init --recursive
     - name: Build
       run: .\build-mingw.ps1
-    - name: Upload artifact
+    - name: Install Go
+      run: choco install -y golang
+    - name: Test Go Build
+      run: go build .\gotest
+    - name: Upload lib
       uses: actions/upload-artifact@v1.0.0
       with:
-        # Artifact name
-        name: windows-mingw
-        # Directory containing files to upload
+        name: windows-mingw-lib
         path: libzt\bin\lib
+    - name: Upload include
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: windows-mingw-include
+        path: libzt\include
