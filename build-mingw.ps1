@@ -17,7 +17,7 @@ foreach ($Path in $Paths) {
     }
     $NewPaths += $Path
 }
-$env:PATH = $NewPaths.Join(";")
+$env:PATH = $NewPaths -join ";"
 
 if (Test-Path $PSScriptRoot\build) {
     Remove-Item -Force $PSScriptRoot\build
