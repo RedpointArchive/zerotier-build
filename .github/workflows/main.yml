@@ -1,0 +1,20 @@
+name: CI
+
+on: [push]
+
+jobs:
+  windows:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install MinGW
+      run: choco install -y mingw
+    - name: CMake
+      uses: lukka/run-cmake@v0.7
+      with:
+        cmakeBuildType: MinSizeRel
+        cmakeGenerator: MinGW Makefiles
+    - name: Make
+      run: mingw32-make
