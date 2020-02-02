@@ -12,6 +12,6 @@ jobs:
     - name: Init Submodules
       run: git submodule update --init --recursive
     - name: CMake
-      run: cmake -G "MinGW Makefiles" libzt
+      run: cmake -G "MSYS Makefiles" libzt
     - name: Make
-      run: mingw32-make
+      run: make
