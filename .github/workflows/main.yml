@@ -15,8 +15,10 @@ jobs:
       run: .\build-mingw.ps1
     - name: Install Go
       run: choco install -y golang
-    - name: Test Go Build
+    - name: Go Build
       run: go build .\gotest
+    - name: Test Go Build
+      run: .\gotest.exe
     - name: Upload lib
       uses: actions/upload-artifact@v1.0.0
       with:
