@@ -29,7 +29,7 @@ try {
     RemoveMSVCFlags $PSScriptRoot\libzt\zto\java\CMakeLists.txt
     $env:CXXFLAGS="-fpermissive"
     cmake -G "MinGW Makefiles" ..\libzt
-    mingw32-make zto
+    mingw32-make zto zto_pic
 } finally {
     Pop-Location
 }
